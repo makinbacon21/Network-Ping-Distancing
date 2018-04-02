@@ -31,9 +31,8 @@ namespace researchNPD
 
             long Atime = 0;
 
-            PingReply[] arrayReply = new PingReply[10];
+            PingReply[] arrayReply = new PingReply[9];
 
-            
 
             for (int i = 0; i < 10; i++)
             {
@@ -41,8 +40,8 @@ namespace researchNPD
                 //new ping request
                 Ping p = new Ping();
 
-                //define PingReply var r
-                //PingReply r;
+                //reply data from ping = r
+                PingReply r;
 
                 //define string s
                 string s;
@@ -51,16 +50,10 @@ namespace researchNPD
                 s = textBox1.Text;
 
                 //set PingReply r to ping of address s
-                //r = p.Send(s);
+                r = p.Send(s);
 
                 //set the [i] of arrayReply to the current value of r
-                //arrayReply[i] = r;
-
-                
-
-                arrayReply[i] = p.Send(s);
-
-
+                arrayReply[i] = r;
 
                 //if this instance of the ping is a success
                 if (arrayReply[i].Status == IPStatus.Success)
@@ -69,10 +62,6 @@ namespace researchNPD
                     pingOutput.Text = "Ping to " + s.ToString() + "[" + arrayReply[i].Address.ToString() + "]" + " Successful"
                        + " Response delay = " + arrayReply[i].RoundtripTime.ToString() + " ms" + "\n";
 
-                }
-                else
-                {
-                    pingOutput.Text = "Failure";
                 }
             }
 
@@ -84,8 +73,7 @@ namespace researchNPD
 
             //for each PingReply instance in arrayReply
             foreach (PingReply item in arrayReply)
-
-               
+            {
                 //set long integer (64-bit) Atime (time of ping) to the previous value of Atime
                 //plus half of the next RoundTripTime divided by 2 (for approx one-way distance)
                 Atime = Atime + (item.RoundtripTime/2);
@@ -97,7 +85,6 @@ namespace researchNPD
                 Atime = Atime / replyCount;
             }
 
-            pingAverage.Text = Atime.ToString();
 
             #region create routerA circle
 
