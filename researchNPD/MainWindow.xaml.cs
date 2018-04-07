@@ -26,14 +26,11 @@ namespace researchNPD
             InitializeComponent();
         }
 
-        private void beginPing_Click(object sender, RoutedEventArgs e)
-        {
-
-            long Atime = 0;
-
-            PingReply[] arrayReply = new PingReply[10;
-
-
+        /// <summary>
+        /// Router algorithm to plot ellipse with input, output, average, PingReply array, and ellipse definition
+        /// </summary>
+        public void routerAlgorithm(TextBox input, TextBlock output, TextBlock average, PingReply[] array, Ellipse ellipse)     //set parameters: TextBox input, TextBlock output, TextBlock average,
+        {                                                                                                                       //array of PingReply array, Ellipse ellipse
             for (int i = 0; i < 10; i++)
             {
 
@@ -47,84 +44,75 @@ namespace researchNPD
                 string s;
 
                 //set s to input text from textBox1
-                s = textBox1.Text;
+                s = input.Text;
 
                 //set PingReply r to ping of address s
-                //r = p.Send(s);
+                r = p.Send(s);
 
                 //set the [i] of arrayReply to the current value of r
-                //arrayReply[i] = r;
+                array[i] = r;
 
-
-                arrayReply[i] = p.Send(s);
-
+                average.Text = null;
 
                 //if this instance of the ping is a success
-                if (arrayReply[i].Status == IPStatus.Success)
+                if (array[i].Status == IPStatus.Success)
                 {
                     //output data from the PingReply as text
-                    pingOutput.Text = "Ping to " + s.ToString() + "[" + arrayReply[i].Address.ToString() + "]" + " Successful"
-                       + " Response delay = " + arrayReply[i].RoundtripTime.ToString() + " ms" + "\n";
 
+                    string currentOutput = "Ping to " + s.ToString() + "[" + array[i].Address.ToString() + "]" + " Successful"
+                       + " Response delay = " + array[i].RoundtripTime.ToString() + " ms" + "\n";
+
+                    output.Text = output.Text + Environment.NewLine + currentOutput;
                 }
                 else
                 {
-                    pingOutput.Text = "Failure";
+                    output.Text = "Failure";
                 }
             }
 
-            //long Atime = arrayReply[0].RoundtripTime / 2;
+            double time = array.Average(i => i.RoundtripTime) / 2;
 
+            pingAverage.Text = time.ToString();
 
-            //New integer replyCount for counting ping replies
-            int replyCount = 0;
-
-            //for each PingReply instance in arrayReply
-            foreach (PingReply item in arrayReply)
-            {
-                //set long integer (64-bit) Atime (time of ping) to the previous value of Atime
-                //plus half of the next RoundTripTime divided by 2 (for approx one-way distance)
-                Atime = Atime + (item.RoundtripTime/2);
-
-                //add one to replyCount
-                replyCount++;
-
-                //Divide Atime by number of replies
-                Atime = Atime / replyCount;
-            }
-
-            pingAverage.Text = Atime.ToString();
-
-            #region create routerA circle
+            #region create router circle
 
             //Ellipse basic details
-            Ellipse a1;
-                a1 = new Ellipse();
-                a1.Height = 100; //CHANGE
-                a1.Width = 100; //CHANGE
             
-                //Ellipse colors and thicknesses
-                a1.Stroke = Brushes.Blue;
-                a1.StrokeThickness = 5;
-                a1.Fill = Brushes.LightBlue;
-                a1.Opacity = 0.4;
+            ellipse = new Ellipse();
+            ellipse.Height = time * 100; //replace * 100 with algorithm based on ex. data
+            ellipse.Width = ellipse.Height;
 
-                //Ellipse hierarchy and alignment
-                canvas1.Children.Add(a1);
-                a1.HorizontalAlignment = HorizontalAlignment.Left;
-                a1.VerticalAlignment = VerticalAlignment.Top;
+            //Ellipse colors and thicknesses
+            ellipse.Stroke = Brushes.Blue;
+            ellipse.StrokeThickness = 5;
+            ellipse.Fill = Brushes.LightBlue;
+            ellipse.Opacity = 0.4;
 
-                //Get location for ellipse
-                double left = 332 - (a1.Width / 2 - 5);
-                double top = 28 - (a1.Height / 2 - 5);
+            //Ellipse hierarchy and alignment
+            canvas1.Children.Add(ellipse);
+            ellipse.HorizontalAlignment = HorizontalAlignment.Left;
+            ellipse.VerticalAlignment = VerticalAlignment.Top;
 
-                //Margin
-                a1.Margin = new Thickness(left, top, 0, 0);
-                //a1.Margin = new Thickness(332, 28, 0, 0);
+            //Get location for ellipse
+            double left = 332 - (ellipse.Width / 2 - 5);
+            double top = 28 - (ellipse.Height / 2 - 5);
 
-            #endregion create routerA circle
+            //Margin
+            ellipse.Margin = new Thickness(left, top, 0, 0);
+
+            #endregion create router circle
+        }
+
+        private void beginPing_Click(object sender, RoutedEventArgs e)
+        {
+            PingReply[] arrayReply = new PingReply[10];
+
+            Ellipse a1 = new Ellipse();
+
+            routerAlgorithm(textBox1, pingOutput, pingAverage, arrayReply, a1);
 
         }
+
         private void textBox1_Validated(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textBox1.Text) || textBox1.Text == "")
@@ -132,7 +120,7 @@ namespace researchNPD
                 MessageBox.Show("Please use valid IP or web address!!");
             }
         }
-        
 
+        
     }
 }
