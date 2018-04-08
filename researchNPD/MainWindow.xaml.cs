@@ -74,12 +74,14 @@ namespace researchNPD
 
             pingAverage.Text = time.ToString();
 
+            double radius = (time - 0.4631) / 0.0993;
+
             #region create router circle
 
             //Ellipse basic details
-            
+
             ellipse = new Ellipse();
-            ellipse.Height = time * 100; //replace * 100 with algorithm based on ex. data
+            ellipse.Height = radius * 3.65; //multiply by pixels/meters
             ellipse.Width = ellipse.Height;
 
             //Ellipse colors and thicknesses

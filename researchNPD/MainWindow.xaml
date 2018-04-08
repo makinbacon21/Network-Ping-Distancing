@@ -21,7 +21,7 @@
             <TabItem x:Name="mapPage" Header="Map">
                 <Canvas Name="canvas1">
 
-                    <Image x:Name="map" Source="/Assets/Images/Capture.png" Canvas.Left="-555" Canvas.Top="-557" Height="1266" Width="2076"/>
+                    <Image x:Name="map" Source="/Assets/Images/earth.png" Canvas.Left="-555" Canvas.Top="-557" Height="1266" Width="2076"/>
 
                     <Ellipse x:Name="routerB" Fill="Red" HorizontalAlignment="Left" Height="10" Stroke="Black" VerticalAlignment="Top" Width="10" Canvas.Left="300" Canvas.Top="221"/>
                     <Ellipse x:Name="routerA" Fill="Blue" HorizontalAlignment="Left" Height="10" Stroke="Black" VerticalAlignment="Top" Width="10" Canvas.Left="332" Canvas.Top="28"/>
