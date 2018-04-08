@@ -29,7 +29,7 @@ namespace researchNPD
         /// <summary>
         /// Router algorithm to plot ellipse with input, output, average, PingReply array, and ellipse definition
         /// </summary>
-        public void routerAlgorithm(TextBox input, TextBlock output, TextBlock average, PingReply[] array, Ellipse ellipse)     //set parameters: TextBox input, TextBlock output, TextBlock average,
+        public void routerAlgorithm(TextBox input, TextBlock output, TextBlock average, PingReply[] array, Ellipse ellipse, int leftEllipse, int topEllipse, Brush color)     //set parameters: TextBox input, TextBlock output, TextBlock average,
         {                                                                                                                       //array of PingReply array, Ellipse ellipse
             for (int i = 0; i < 10; i++)
             {
@@ -72,7 +72,7 @@ namespace researchNPD
 
             double time = array.Average(i => i.RoundtripTime) / 2;
 
-            pingAverage.Text = time.ToString();
+            average.Text = time.ToString();
 
             double radius = (time - 0.4631) / 0.0993;
 
@@ -85,9 +85,9 @@ namespace researchNPD
             ellipse.Width = ellipse.Height;
 
             //Ellipse colors and thicknesses
-            ellipse.Stroke = Brushes.Blue;
+            ellipse.Stroke = color;
             ellipse.StrokeThickness = 5;
-            ellipse.Fill = Brushes.LightBlue;
+            ellipse.Fill = color;
             ellipse.Opacity = 0.4;
 
             //Ellipse hierarchy and alignment
@@ -96,8 +96,8 @@ namespace researchNPD
             ellipse.VerticalAlignment = VerticalAlignment.Top;
 
             //Get location for ellipse
-            double left = 332 - (ellipse.Width / 2 - 5);
-            double top = 28 - (ellipse.Height / 2 - 5);
+            double left = leftEllipse - (ellipse.Width / 2 - 5);
+            double top = topEllipse - (ellipse.Height / 2 - 5);
 
             //Margin
             ellipse.Margin = new Thickness(left, top, 0, 0);
@@ -111,7 +111,7 @@ namespace researchNPD
 
             Ellipse a1 = new Ellipse();
 
-            routerAlgorithm(textBox1, pingOutput, pingAverage, arrayReply, a1);
+            routerAlgorithm(textBox1, pingOutput, pingAverage, arrayReply, a1, 371, 79, Brushes.Blue);
 
         }
 
@@ -121,6 +121,24 @@ namespace researchNPD
             {
                 MessageBox.Show("Please use valid IP or web address!!");
             }
+        }
+
+        private void beginPingB_Click(object sender, RoutedEventArgs e)
+        {
+            PingReply[] arrayBReply = new PingReply[10];
+
+            Ellipse b1 = new Ellipse();
+
+            routerAlgorithm(textBox2, pingOutputB, pingAverageB, arrayBReply, b1, 342, 231, Brushes.Red);
+        }
+
+        private void beginPingC_Click(object sender, RoutedEventArgs e)
+        {
+            PingReply[] arrayCReply = new PingReply[10];
+
+            Ellipse c1 = new Ellipse();
+
+            routerAlgorithm(textBox3, pingOutputC, pingAverageC, arrayCReply, c1, 431, 240, Brushes.Green);
         }
 
         
