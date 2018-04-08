@@ -10,12 +10,12 @@
         <TabControl x:Name="tabs">
             <TabItem x:Name="pingPage" Header="Ping Controls" Height="22" VerticalAlignment="Top">
                 <Grid Background="#FFE5E5E5">
-                    <Button x:Name="beginPing" Content="Ping A" HorizontalAlignment="Left" Margin="50,100,0,0" VerticalAlignment="Top" Width="75" Click="beginPing_Click"/>
-                    <TextBox x:Name="textBox1" HorizontalAlignment="Left" Margin="15,0,0,150" TextWrapping="Wrap" Text="Enter address here" VerticalAlignment="Bottom" Width="148" TextAlignment="Center"/>
-                    <ScrollViewer Margin="15,261,623,15">
-                        <TextBlock ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="pingOutput" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Output" VerticalAlignment="Bottom" Width="148" TextAlignment="Center"/>
+                    <Button x:Name="beginPing" Content="Ping A" HorizontalAlignment="Left" Margin="72,103,0,0" VerticalAlignment="Top" Width="75" Click="beginPing_Click"/>
+                    <TextBox x:Name="textBox1" HorizontalAlignment="Left" Margin="27,186,0,181.6" TextWrapping="Wrap" Text="Enter address here" VerticalAlignment="Center" Width="148" TextAlignment="Center" Height="22"/>
+                    <ScrollViewer Margin="15,252,0,14.6" HorizontalAlignment="Left" Width="188">
+                        <TextBlock ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="pingOutput" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Output" VerticalAlignment="Bottom" Width="163" TextAlignment="Center"/>
                     </ScrollViewer>
-                    <TextBlock x:Name="pingAverage" HorizontalAlignment="Left" Margin="27,0,0,60" TextWrapping="Wrap" Text="Average Time" VerticalAlignment="Center" Width="121" TextAlignment="Center"/>
+                    <TextBlock x:Name="pingAverage" HorizontalAlignment="Left" Margin="39,157,0,216.6" TextWrapping="Wrap" Text="Average Time" VerticalAlignment="Center" Width="121" TextAlignment="Center"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="mapPage" Header="Map">
