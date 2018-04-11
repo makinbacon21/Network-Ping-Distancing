@@ -74,14 +74,14 @@ namespace researchNPD
 
             average.Text = time.ToString();
 
-            double radius = (time - 0.4631) / 0.0993;
+            double distance = (time - 0.4631) / 0.0993;
 
             #region create router circle
 
             //Ellipse basic details
 
             ellipse = new Ellipse();
-            ellipse.Height = radius * 3.65; //multiply by pixels/meters
+            ellipse.Height = (distance * 3.65)*2; //multiply by pixels/meters
             ellipse.Width = ellipse.Height;
 
             //Ellipse colors and thicknesses
