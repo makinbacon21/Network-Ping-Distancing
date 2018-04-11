@@ -31,7 +31,7 @@ namespace researchNPD
         /// </summary>
         public void routerAlgorithm(TextBox input, TextBlock output, TextBlock average, PingReply[] array, Ellipse ellipse, int leftEllipse, int topEllipse, Brush color)     //set parameters: TextBox input, TextBlock output, TextBlock average,
         {                                                                                                                       //array of PingReply array, Ellipse ellipse
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 20; i++)
             {
 
                 //new ping request
@@ -76,8 +76,8 @@ namespace researchNPD
 
             //double newTime = time - 0.4631;
 
-            //double radius = newTime/0.0993;
-            double radius = 8.6581 * time - 3.2487;
+            double radius = time/0.0993;
+            //double radius = 8.6581 * time - 3.2487;
             #region create router circle
 
             //Ellipse basic details
@@ -109,7 +109,7 @@ namespace researchNPD
 
         private void beginPing_Click(object sender, RoutedEventArgs e)
         {
-            PingReply[] arrayReply = new PingReply[10];
+            PingReply[] arrayReply = new PingReply[20];
 
             Ellipse a1 = new Ellipse();
 
@@ -127,7 +127,7 @@ namespace researchNPD
 
         private void beginPingB_Click(object sender, RoutedEventArgs e)
         {
-            PingReply[] arrayBReply = new PingReply[10];
+            PingReply[] arrayBReply = new PingReply[20];
 
             Ellipse b1 = new Ellipse();
 
@@ -136,7 +136,7 @@ namespace researchNPD
 
         private void beginPingC_Click(object sender, RoutedEventArgs e)
         {
-            PingReply[] arrayCReply = new PingReply[10];
+            PingReply[] arrayCReply = new PingReply[20];
 
             Ellipse c1 = new Ellipse();
 
