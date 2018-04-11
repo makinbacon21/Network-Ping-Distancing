@@ -74,14 +74,16 @@ namespace researchNPD
 
             average.Text = time.ToString();
 
-            double distance = (time - 0.4631) / 0.0993;
+            //double newTime = time - 0.4631;
 
+            //double radius = newTime/0.0993;
+            double radius = 8.6581 * time - 3.2487;
             #region create router circle
 
             //Ellipse basic details
 
             ellipse = new Ellipse();
-            ellipse.Height = (distance * 3.65)*2; //multiply by pixels/meters
+            ellipse.Height = radius * 3.65 *2; //multiply by pixels/meters
             ellipse.Width = ellipse.Height;
 
             //Ellipse colors and thicknesses
@@ -111,7 +113,7 @@ namespace researchNPD
 
             Ellipse a1 = new Ellipse();
 
-            routerAlgorithm(textBox1, pingOutput, pingAverage, arrayReply, a1, 371, 79, Brushes.Blue);
+            routerAlgorithm(textBox1, pingOutput, pingAverage, arrayReply, a1, 361, 187, Brushes.Blue);
 
         }
 
@@ -129,7 +131,7 @@ namespace researchNPD
 
             Ellipse b1 = new Ellipse();
 
-            routerAlgorithm(textBox2, pingOutputB, pingAverageB, arrayBReply, b1, 342, 231, Brushes.Red);
+            routerAlgorithm(textBox2, pingOutputB, pingAverageB, arrayBReply, b1, 382, 150, Brushes.Red);
         }
 
         private void beginPingC_Click(object sender, RoutedEventArgs e)
@@ -138,7 +140,7 @@ namespace researchNPD
 
             Ellipse c1 = new Ellipse();
 
-            routerAlgorithm(textBox3, pingOutputC, pingAverageC, arrayCReply, c1, 431, 240, Brushes.Green);
+            routerAlgorithm(textBox3, pingOutputC, pingAverageC, arrayCReply, c1, 410, 148, Brushes.Green);
         }
 
         
