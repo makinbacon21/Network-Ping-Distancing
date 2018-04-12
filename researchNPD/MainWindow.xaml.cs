@@ -74,9 +74,9 @@ namespace researchNPD
 
             average.Text = time.ToString();
 
-            //double newTime = time - 0.4631;
+            double newTime = time - 0.218;
 
-            double radius = time/0.0993;
+            double radius = newTime/0.0496;
             //double radius = 8.6581 * time - 3.2487;
             #region create router circle
 
