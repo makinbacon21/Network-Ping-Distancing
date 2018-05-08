@@ -70,7 +70,7 @@ namespace researchNPD
                 }
             }
 
-            double time = array.Average(i => i.RoundtripTime) / 2;
+            double time = array.Average(reply => reply.RoundtripTime) / 2;
 
             average.Text = time.ToString();
 
