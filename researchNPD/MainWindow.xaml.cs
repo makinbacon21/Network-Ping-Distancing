@@ -29,9 +29,9 @@ namespace researchNPD
         /// <summary>
         /// Router algorithm to plot ellipse with input, output, average, PingReply array, and ellipse definition
         /// </summary>
-        public void routerAlgorithm(TextBox input, TextBlock output, TextBlock average, PingReply[] array, Ellipse ellipse, int leftEllipse, int topEllipse, Brush color)     //set parameters: TextBox input, TextBlock output, TextBlock average,
+        public void routerAlgorithm(TextBox input, TextBlock output, TextBlock average, PingReply[] array, Ellipse ellipse, double leftEllipse, double topEllipse, Brush color)     //set parameters: TextBox input, TextBlock output, TextBlock average,
         {                                                                                                                       //array of PingReply array, Ellipse ellipse
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 100; i++)
             {
 
                 //new ping request
@@ -54,6 +54,27 @@ namespace researchNPD
 
                 average.Text = null;
 
+                if (array[i].RoundtripTime / 2 >= 90)
+                {
+                    //new ping request
+                    Ping otherP = new Ping();
+
+                    //reply data from ping = r
+                    PingReply otherR;
+
+                    //define string s
+                    string otherS;
+
+                    //set s to input text from textBox1
+                    otherS = input.Text;
+
+                    //set PingReply r to ping of address s
+                    otherR = p.Send(s);
+
+                    //set the [i] of arrayReply to the current value of r
+                    array[i] = otherR;
+                }
+
                 //if this instance of the ping is a success
                 if (array[i].Status == IPStatus.Success)
                 {
@@ -72,11 +93,13 @@ namespace researchNPD
 
             double time = array.Average(i => i.RoundtripTime) / 2;
 
+           
+
             average.Text = time.ToString();
 
-            double newTime = time - 0.218;
+            double newTime = time - 0.4361;
 
-            double radius = newTime/0.0496;
+            double radius = newTime/0.0993;
             //double radius = 8.6581 * time - 3.2487;
             #region create router circle
 
@@ -109,11 +132,11 @@ namespace researchNPD
 
         private void beginPing_Click(object sender, RoutedEventArgs e)
         {
-            PingReply[] arrayReply = new PingReply[20];
+            PingReply[] arrayReply = new PingReply[100];
 
             Ellipse a1 = new Ellipse();
 
-            routerAlgorithm(textBox1, pingOutput, pingAverage, arrayReply, a1, 361, 187, Brushes.Blue);
+            routerAlgorithm(textBox1, pingOutput, pingAverage, arrayReply, a1, Canvas.GetLeft(a1), Canvas.GetTop(a1), Brushes.Blue);
 
         }
 
@@ -127,20 +150,20 @@ namespace researchNPD
 
         private void beginPingB_Click(object sender, RoutedEventArgs e)
         {
-            PingReply[] arrayBReply = new PingReply[20];
+            PingReply[] arrayBReply = new PingReply[100];
 
             Ellipse b1 = new Ellipse();
 
-            routerAlgorithm(textBox2, pingOutputB, pingAverageB, arrayBReply, b1, 382, 150, Brushes.Red);
+            routerAlgorithm(textBox2, pingOutputB, pingAverageB, arrayBReply, b1, Canvas.GetLeft(b1), Canvas.GetTop(b1), Brushes.Red);
         }
 
         private void beginPingC_Click(object sender, RoutedEventArgs e)
         {
-            PingReply[] arrayCReply = new PingReply[20];
+            PingReply[] arrayCReply = new PingReply[100];
 
             Ellipse c1 = new Ellipse();
 
-            routerAlgorithm(textBox3, pingOutputC, pingAverageC, arrayCReply, c1, 410, 148, Brushes.Green);
+            routerAlgorithm(textBox3, pingOutputC, pingAverageC, arrayCReply, c1, Canvas.GetLeft(c1), Canvas.GetTop(c1), Brushes.Green);
         }
 
         

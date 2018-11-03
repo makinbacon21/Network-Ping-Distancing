@@ -37,11 +37,11 @@
             <TabItem x:Name="mapPage" Header="Map">
                 <Canvas Name="canvas1">
 
-                    <Image x:Name="map" Source="/Assets/Images/earth.png" Canvas.Left="-501" Canvas.Top="-315" Height="1266" Width="2076"/>
+                    <Image x:Name="map" Source="/Assets/Images/earth.png" Canvas.Left="-382" Canvas.Top="-136"/>
 
                     <Ellipse x:Name="routerB" Fill="Red" HorizontalAlignment="Left" Height="10" Stroke="Black" VerticalAlignment="Top" Width="10" Canvas.Left="382" Canvas.Top="150"/>
-                    <Ellipse x:Name="routerA" Fill="Blue" HorizontalAlignment="Left" Height="10" Stroke="Black" VerticalAlignment="Top" Width="10" Canvas.Left="361" Canvas.Top="187"/>
-                    <Ellipse x:Name="routerC" Fill="#FF17E20D" HorizontalAlignment="Left" Height="10" Stroke="Black" VerticalAlignment="Top" Width="10" Canvas.Left="410" Canvas.Top="148" RenderTransformOrigin="0.5,0.5">
+                    <Ellipse x:Name="routerA" Fill="Blue" HorizontalAlignment="Left" Height="10" Stroke="Black" VerticalAlignment="Top" Width="10" Canvas.Left="366" Canvas.Top="176"/>
+                    <Ellipse x:Name="routerC" Fill="#FF17E20D" HorizontalAlignment="Left" Height="10" Stroke="Black" VerticalAlignment="Top" Width="10" Canvas.Left="404" Canvas.Top="150" RenderTransformOrigin="0.5,0.5">
                         <Ellipse.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
