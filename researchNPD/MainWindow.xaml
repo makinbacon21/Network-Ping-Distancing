@@ -37,11 +37,11 @@
             <TabItem x:Name="mapPage" Header="Map">
                 <Canvas Name="canvas1">
 
-                    <Image x:Name="map" Source="/Assets/Images/earth.png" Canvas.Left="-382" Canvas.Top="-136"/>
+                    <Image x:Name="map" Source="/Assets/Images/earth.png" Canvas.Left="-343" Canvas.Top="-138"/>
 
-                    <Ellipse x:Name="routerB" Fill="Red" HorizontalAlignment="Left" Height="10" Stroke="Black" VerticalAlignment="Top" Width="10" Canvas.Left="382" Canvas.Top="150"/>
-                    <Ellipse x:Name="routerA" Fill="Blue" HorizontalAlignment="Left" Height="10" Stroke="Black" VerticalAlignment="Top" Width="10" Canvas.Left="366" Canvas.Top="176"/>
-                    <Ellipse x:Name="routerC" Fill="#FF17E20D" HorizontalAlignment="Left" Height="10" Stroke="Black" VerticalAlignment="Top" Width="10" Canvas.Left="404" Canvas.Top="150" RenderTransformOrigin="0.5,0.5">
+                    <Ellipse x:Name="routerB" Fill="Red" HorizontalAlignment="Left" Height="10" Stroke="Black" VerticalAlignment="Top" Width="10" Canvas.Left="480" Canvas.Top="212"/>
+                    <Ellipse x:Name="routerA" Fill="Blue" HorizontalAlignment="Left" Height="10" Stroke="Black" VerticalAlignment="Top" Width="10" Canvas.Left="451" Canvas.Top="174"/>
+                    <Ellipse x:Name="routerC" Fill="#FF17E20D" HorizontalAlignment="Left" Height="10" Stroke="Black" VerticalAlignment="Top" Width="10" Canvas.Left="394" Canvas.Top="175" RenderTransformOrigin="0.5,0.5">
                         <Ellipse.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>

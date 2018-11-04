@@ -95,29 +95,16 @@ namespace researchNPD
             }
             
             //get average time and set it as a double and display it in the "average" box
-            double time = array.Average(reply => reply.RoundtripTime) / 2;
+            double time = array.Average(reply => reply.RoundtripTime);
 
            
 
             average.Text = time.ToString();
 
-            double radius = 0.0;
+            double diameter = 0.0;
 
-            if(router == "a")
-            {
-                radius = (time + 0.0088) / 0.189;
-            }
-
-            else if(router == "b")
-            {
-                radius = (time + 0.0088) / 0.189;
-            }
-
-            else if(router == "c")
-            {
-                radius = (time + 0.0088) / 0.189;
-            }
-
+            diameter = (time - 0.5154) / 0.0246;
+            double radius = diameter / 2;
 
 
 /*  THIS IS OLD TEST STUFF
@@ -163,7 +150,7 @@ namespace researchNPD
 
             Ellipse a1 = new Ellipse();
 
-            routerAlgorithm(textBox1, pingOutput, pingAverage, arrayReply, "a", a1, 361, 187, Brushes.Blue);
+            routerAlgorithm(textBox1, pingOutput, pingAverage, arrayReply, "a", a1, 451, 174, Brushes.Blue);
 
         }
 
@@ -181,7 +168,7 @@ namespace researchNPD
 
             Ellipse b1 = new Ellipse();
 
-            routerAlgorithm(textBox2, pingOutputB, pingAverageB, arrayBReply, "b", b1, 382, 150, Brushes.Red);
+            routerAlgorithm(textBox2, pingOutputB, pingAverageB, arrayBReply, "b", b1, 480, 212, Brushes.Red);
         }
 
         private void beginPingC_Click(object sender, RoutedEventArgs e)
@@ -190,7 +177,7 @@ namespace researchNPD
 
             Ellipse c1 = new Ellipse();
 
-            routerAlgorithm(textBox3, pingOutputC, pingAverageC, arrayCReply, "c", c1, 410, 148, Brushes.Green);
+            routerAlgorithm(textBox3, pingOutputC, pingAverageC, arrayCReply, "c", c1, 394, 175, Brushes.Green);
         }
 
         
