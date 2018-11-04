@@ -70,7 +70,7 @@ namespace researchNPD
                 }
 
                 //if this instance of the ping is a success
-                if (array[i].Status == IPStatus.Success)
+                if (array[i].Status == IPStatus.Success && array[i].RoundtripTime <= 100.0)
                 {
                     //output data from the PingReply as text
 
@@ -79,13 +79,21 @@ namespace researchNPD
 
                     output.Text = output.Text + Environment.NewLine + currentOutput;
                 }
+                else if (array[i].Status == IPStatus.Success && array[i].RoundtripTime > 100.0)
+                {
+                    output.Text = output.Text + "\nNot included--trying again";
+
+                    i--;
+                }
                 else
                 {
                     //Let the user know the ping sequence failed
-                    output.Text = "Failure";
+                    output.Text = output.Text + "\nFailure--trying again";
+
+                    i--;
                 }
             }
-
+            
             //get average time and set it as a double and display it in the "average" box
             double time = array.Average(reply => reply.RoundtripTime) / 2;
 
@@ -169,7 +177,7 @@ namespace researchNPD
 
         private void beginPingB_Click(object sender, RoutedEventArgs e)
         {
-            PingReply[] arrayBReply = new PingReply[20];
+            PingReply[] arrayBReply = new PingReply[100];
 
             Ellipse b1 = new Ellipse();
 
@@ -178,7 +186,7 @@ namespace researchNPD
 
         private void beginPingC_Click(object sender, RoutedEventArgs e)
         {
-            PingReply[] arrayCReply = new PingReply[20];
+            PingReply[] arrayCReply = new PingReply[100];
 
             Ellipse c1 = new Ellipse();
 
