@@ -15,5 +15,4 @@ WindowsBase
 No tests required at this point. To build project, just run the code in Visual Studio on Debug or Release on AnyCPU.
 
 # Contribute
-I would like to have this working with the built-in example by the end of the year, and the program itself will follow with no required timeframe.
-Read the comments on MainPage.xaml.cs and the run the project--everything makes sense then.
+The project is finished for this year, but if someone comes across this repo they are welcome to help integrate the Google Maps API to create a live, interactive map rather than the static map currently included.
